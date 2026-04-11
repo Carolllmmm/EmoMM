@@ -13,7 +13,7 @@ const title = 'EmoMM'
 const title_color = '#000000'
 
 // 标题补充，没有则置为''即可
-const title_supp = ': Benchmarking and Steering MLLM for Multimodal Emotion Recognition under Conflict and Missingness'
+const title_supp = 'Benchmarking and Steering MLLM for Multimodal Emotion Recognition under Conflict and Missingness'
 
 // 标题补充颜色
 const title_supp_color = '#42B883'
@@ -147,10 +147,12 @@ const buttons = [
     <!-- 文章标题 -->
     <el-row justify="center">
       <el-col :span="20">
-        <h1 class="paper-title">
-          <span v-if="title" :style="{color:title_color}"> {{ title }}</span>
-          <span v-if="title_supp" :style="{color:title_supp_color}"> {{ title_supp }}</span>
-        </h1>
+        <h1 class="project-title">
+		  <span :style="{ color: title_color }">{{ title }}</span>
+		  <span class="title-supp" :style="{ color: title_supp_color }">
+		    {{ title_supp }}
+		  </span>
+		</h1>
       </el-col>
     </el-row>
 
@@ -216,6 +218,15 @@ const buttons = [
   font-size: 42px;
   margin: 32px;
   text-align: center;
+}
+	
+.project-title {
+  text-align: center;
+}
+
+.title-supp {
+  display: block;
+  margin-top: 8px;
 }
 
 /* 姓名和地址按钮 */
