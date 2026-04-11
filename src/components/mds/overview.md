@@ -4,7 +4,7 @@ Multimodal Emotion Recognition (MER) is critical for interpreting real-world int
 
 <div style="text-align: center; margin: 24px 0;">
   <img
-    src="./EmoMM_subset.png"
+    src="./icon/EmoMM_subset.png"
     alt="Overview of the EmoMM benchmark"
     style="max-width: 100%; width: 850px;"
   />
