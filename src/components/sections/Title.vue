@@ -25,7 +25,7 @@ const btn_color = '#444444'
 const authors = [
   {
     name: "Yueru Sun",
-    icon: "./icon/syr.jpg",
+    icon: "./icon/syr.png",
     homepage: "",
     address_flag: "1,2,#"
   },
@@ -37,37 +37,37 @@ const authors = [
   },
   {
     name: "Haoyu Gu",
-    icon: "./icon/ghy.jpg",
+    icon: "./icon/ghy.png",
     homepage: "https://haoyu-gu.github.io",
     address_flag: "1,2"
   },
 	  {
     name: "Nuo Chen",
-    icon: "./icon/cn.jpg",
+    icon: "./icon/cn.png",
     homepage: "",
     address_flag: "1,2"
   },
 	  {
     name: "Dong She",
-    icon: "./icon/sd.jpg",
+    icon: "./icon/sd.png",
     homepage: "",
     address_flag: "1,2"
   },
 	  {
     name: "Xianrong Yao",
-    icon: "./icon/yxr.jpg",
+    icon: "./icon/yxr.png",
     homepage: "",
     address_flag: "1,2"
   },
 		  {
     name: "Yang Gao",
-    icon: "./icon/gy.jpg",
+    icon: "./icon/gy.png",
     homepage: "",
     address_flag: "1,2,*"
   },
 		  {
     name: "Zhanpeng Jin",
-    icon: "./icon/jzp.jpg",
+    icon: "./icon/jzp.png",
     homepage: "",
     address_flag: "1,2,*"
   },
