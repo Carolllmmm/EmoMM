@@ -78,13 +78,13 @@ const addresses = [
   {
     address_flag: "1",
     name: "South China University of Technology",
-    icon: "./icon/scut.jpg",
+    icon: "./icon/scut.png",
     homepage: "https://www.scut.edu.cn/new/"
   },
   {
     address_flag: "2",
     name: "HAI Lab",
-    icon: "./icon/hai.jpg",
+    icon: "./icon/hai.png",
     homepage: "https://github.com/SCUT-HAI"
   },
 ]
