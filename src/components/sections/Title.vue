@@ -13,7 +13,7 @@ const title = 'EmoMM'
 const title_color = '#000000'
 
 // 标题补充，没有则置为''即可
-const title_supp = ': Benchmarking and Steering MLLM for
+const title_supp = 'Benchmarking and Steering MLLM for
 Multimodal Emotion Recognition under Conflict and Missingness'
 
 // 标题补充颜色
