@@ -1,6 +1,6 @@
 <template>
   <div class="result-table-wrapper">
-    <h3 class="result-title">Experimental Results</h3>
+    <h2 class="section-title">Experimental Results</h2>
 
     <div class="table-scroll">
       <table class="result-table">
@@ -92,38 +92,50 @@
 </template>
 
 <script setup>
-// No script needed
+// no script needed
 </script>
 
 <style scoped>
 .result-table-wrapper {
   margin: 24px 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
-.result-title {
-  margin-bottom: 16px;
-  font-size: 2rem;
+.section-title {
+  margin: 0 0 18px 0;
+  text-align: center;
+  font-size: 3rem;
   font-weight: 700;
+  font-style: italic;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
 }
 
 .table-scroll {
+  width: 100%;
+  max-width: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
+  display: block;
 }
 
 .result-table {
-  width: 100%;
+  width: max-content;
+  min-width: 100%;
   border-collapse: collapse;
   font-family: "Times New Roman", Times, serif;
   font-size: 15px;
   line-height: 1.4;
   border-top: 2px solid #444;
   border-bottom: 2px solid #444;
-  min-width: 1100px;
+  table-layout: auto;
 }
 
 .result-table th,
 .result-table td {
-  padding: 10px 12px;
+  padding: 10px 16px;
   border: 1px solid #d9d9d9;
 }
 
@@ -131,10 +143,12 @@
   text-align: center;
   font-weight: 700;
   border-bottom: 1px solid #666;
+  white-space: nowrap;
 }
 
 .result-table tbody td {
   text-align: right;
+  white-space: nowrap;
 }
 
 .result-table .model-col,
@@ -144,7 +158,7 @@
 }
 
 .result-table .model-col {
-  min-width: 220px;
+  min-width: 300px;
 }
 
 .result-table .group-start {
@@ -152,7 +166,7 @@
 }
 
 .result-table .metric {
-  min-width: 72px;
+  min-width: 96px;
 }
 
 .section-row td {
