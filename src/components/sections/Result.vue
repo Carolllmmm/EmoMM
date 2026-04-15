@@ -1,5 +1,5 @@
 <script setup>
-import ResultTable from '../components/ResultTable.vue'
+import ResultTable from '../ResultTable.vue'
 </script>
 
 <template>
@@ -13,3 +13,6 @@ import ResultTable from '../components/ResultTable.vue'
     </el-row>
   </div>
 </template>
+
+<style scoped>
+</style>
