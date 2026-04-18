@@ -162,11 +162,13 @@ const renderValue = (metric, key) => ({
 }
 
 .section-title {
-  margin: 0 0 22px;
+  margin: 0 0 18px;
   text-align: center;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-size: 1.7rem;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
   color: #111827;
 }
 
@@ -265,8 +267,8 @@ const renderValue = (metric, key) => ({
 
 @media (max-width: 768px) {
   .section-title {
-    font-size: 1.7rem;
-    margin-bottom: 18px;
+    font-size: 1.45rem;
+    margin-bottom: 16px;
   }
 
   .result-table {
