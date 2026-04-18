@@ -89,59 +89,63 @@ const renderValue = (metric, key) => ({
 </script>
 
 <template>
-  <div>
+  <div class="result-page">
     <el-divider />
 
     <el-row justify="center">
       <el-col :xs="24" :sm="22" :md="20" :lg="18" :xl="18">
-        <div class="table-wrap">
-          <table class="result-table">
-            <thead>
-              <tr>
-                <th rowspan="2" class="model-header">Model</th>
-                <th colspan="3">EmoMM (Overall)</th>
-                <th colspan="3">EmoMM-Align</th>
-                <th colspan="3">EmoMM-Conflict</th>
-                <th colspan="3">EmoMM-Missing</th>
-              </tr>
-              <tr>
-                <template v-for="section in 4" :key="section">
-                  <th>Acc↑</th>
-                  <th>F1↑</th>
-                  <th>MAE↓</th>
-                </template>
-              </tr>
-            </thead>
+        <div class="section-title">Result</div>
 
-            <tbody>
-              <template v-for="row in tableRows" :key="row.type === 'group' ? row.label : `${row.model}-${row.overall.acc}`">
-                <tr v-if="row.type === 'group'" class="group-row">
-                  <td colspan="13">{{ row.label }}</td>
+        <div class="table-outer">
+          <div class="table-wrap">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th rowspan="2" class="model-header">Model</th>
+                  <th colspan="3">EmoMM (Overall)</th>
+                  <th colspan="3">EmoMM-Align</th>
+                  <th colspan="3">EmoMM-Conflict</th>
+                  <th colspan="3">EmoMM-Missing</th>
                 </tr>
-
-                <tr v-else :class="['data-row', { highlight: row.highlight }]">
-                  <td class="model-cell">{{ row.model }}</td>
-                  <template v-for="metricKey in metricKeys" :key="`${row.model}-${metricKey}`">
-                    <td>
-                      <span :class="{ strong: renderValue(row[metricKey], 'acc').bold }">
-                        {{ renderValue(row[metricKey], 'acc').value }}
-                      </span>
-                    </td>
-                    <td>
-                      <span :class="{ strong: renderValue(row[metricKey], 'f1').bold }">
-                        {{ renderValue(row[metricKey], 'f1').value }}
-                      </span>
-                    </td>
-                    <td>
-                      <span :class="{ strong: renderValue(row[metricKey], 'mae').bold }">
-                        {{ renderValue(row[metricKey], 'mae').value }}
-                      </span>
-                    </td>
+                <tr>
+                  <template v-for="section in 4" :key="section">
+                    <th>Acc↑</th>
+                    <th>F1↑</th>
+                    <th>MAE↓</th>
                   </template>
                 </tr>
-              </template>
-            </tbody>
-          </table>
+              </thead>
+
+              <tbody>
+                <template v-for="row in tableRows" :key="row.type === 'group' ? row.label : `${row.model}-${row.overall.acc}`">
+                  <tr v-if="row.type === 'group'" class="group-row">
+                    <td colspan="13">{{ row.label }}</td>
+                  </tr>
+
+                  <tr v-else :class="['data-row', { highlight: row.highlight }]">
+                    <td class="model-cell">{{ row.model }}</td>
+                    <template v-for="metricKey in metricKeys" :key="`${row.model}-${metricKey}`">
+                      <td>
+                        <span :class="{ strong: renderValue(row[metricKey], 'acc').bold }">
+                          {{ renderValue(row[metricKey], 'acc').value }}
+                        </span>
+                      </td>
+                      <td>
+                        <span :class="{ strong: renderValue(row[metricKey], 'f1').bold }">
+                          {{ renderValue(row[metricKey], 'f1').value }}
+                        </span>
+                      </td>
+                      <td>
+                        <span :class="{ strong: renderValue(row[metricKey], 'mae').bold }">
+                          {{ renderValue(row[metricKey], 'mae').value }}
+                        </span>
+                      </td>
+                    </template>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <p class="caption">
@@ -153,19 +157,40 @@ const renderValue = (metric, key) => ({
 </template>
 
 <style scoped>
+.result-page {
+  width: 100%;
+}
+
+.section-title {
+  margin: 0 0 22px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #111827;
+}
+
+.table-outer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .table-wrap {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
   overflow-x: auto;
 }
 
 .result-table {
-  width: 100%;
-  min-width: 1120px;
+  margin: 0 auto;
   border-collapse: collapse;
   font-size: 15px;
-  line-height: 1.4;
+  line-height: 1.45;
   color: #1f2937;
-  border-top: 1.5px solid #111827;
-  border-bottom: 1.5px solid #111827;
+  border-top: 2px solid #111827;
+  border-bottom: 2px solid #111827;
 }
 
 .result-table th,
@@ -173,12 +198,12 @@ const renderValue = (metric, key) => ({
   padding: 10px 12px;
   text-align: center;
   border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
 }
 
 .result-table thead th {
-  font-weight: 600;
-  color: #111827;
-  white-space: nowrap;
+  font-weight: 700;
+  color: #0f172a;
 }
 
 .result-table thead tr:first-child th {
@@ -190,13 +215,16 @@ const renderValue = (metric, key) => ({
 .result-table thead tr:last-child th {
   padding-top: 4px;
   padding-bottom: 10px;
-  border-bottom: 1.5px solid #9ca3af;
+  border-bottom: 1.5px solid #94a3b8;
 }
 
 .model-header,
 .model-cell {
   text-align: left !important;
-  white-space: nowrap;
+}
+
+.model-header {
+  min-width: 150px;
 }
 
 .model-cell {
@@ -204,17 +232,22 @@ const renderValue = (metric, key) => ({
 }
 
 .group-row td {
-  padding: 8px 12px;
+  padding: 9px 12px;
   text-align: left;
   font-style: italic;
-  color: #374151;
-  background: #fafafa;
-  border-top: 1px solid #d1d5db;
-  border-bottom: 1px solid #d1d5db;
+  color: #64748b;
+  background: #ffffff;
+  border-top: 1px solid #cbd5e1;
+  border-bottom: 0;
 }
 
 .data-row.highlight {
-  background: #f3f4f6;
+  background: #eef6ff;
+}
+
+.data-row.highlight .model-cell {
+  color: #0f4c81;
+  font-weight: 600;
 }
 
 .strong {
@@ -222,13 +255,20 @@ const renderValue = (metric, key) => ({
 }
 
 .caption {
-  margin: 14px 0 0;
+  margin: 14px auto 0;
+  width: fit-content;
+  max-width: 100%;
   font-size: 16px;
   line-height: 1.7;
   color: #111827;
 }
 
 @media (max-width: 768px) {
+  .section-title {
+    font-size: 1.7rem;
+    margin-bottom: 18px;
+  }
+
   .result-table {
     font-size: 14px;
   }
@@ -239,7 +279,7 @@ const renderValue = (metric, key) => ({
   }
 
   .caption {
-    font-size: 15px;
+    font-size: 14px;
   }
 }
 </style>
