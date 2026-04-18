@@ -7,6 +7,8 @@ const CASES = [
   {
     combo: 'TAV', dataset: 'CMU-MOSI', bucket: 'Conflict',
     gt: 'WN', baseline: 'P', chase: 'WN',
+    modal: { t: 'WP', a: 'Neu', v: 'N', full: 'WN' },
+    modal: { t: 'WN', a: 'Neu', v: 'WN', full: 'WN' },
     layers: [
       { l: 13, s: true,  p: 0.959, b: [0.7436, 0.2319, 0.0245], a: [0.7069, 0.2470, 0.0461] },
       { l: 14, s: true,  p: 0.960, b: [0.7244, 0.2152, 0.0605], a: [0.6847, 0.2330, 0.0823] },
@@ -29,6 +31,7 @@ const CASES = [
   {
     combo: 'TV', dataset: 'CH-SIMSv2', bucket: 'Missing',
     gt: 'WN', baseline: 'N', chase: 'WN',
+    modal: { t: 'N', a: 'WN', v: 'N', full: 'WN' },
     layers: [
       { l: 13, s: true,  p: 0.765, b: [0.9809, 0.0000, 0.0191], a: [0.9347, 0.0000, 0.0653] },
       { l: 14, s: true,  p: 0.776, b: [0.9792, 0.0000, 0.0208], a: [0.9331, 0.0000, 0.0669] },
@@ -51,6 +54,7 @@ const CASES = [
   {
     combo: 'AV', dataset: 'CMU-MOSI', bucket: 'Missing',
     gt: 'P', baseline: 'N', chase: 'P',
+    modal: { t: 'N', a: 'WN', v: 'WN', full: 'P' },
     layers: [
       { l: 13, s: true, p: 0.958, b: [0.0000, 0.8918, 0.1082], a: [0.0000, 0.8794, 0.1206] },
       { l: 14, s: true, p: 0.959, b: [0.0000, 0.8497, 0.1503], a: [0.0000, 0.8372, 0.1628] },
@@ -73,6 +77,7 @@ const CASES = [
   {
     combo: 'TA', dataset: 'CMU-MOSI', bucket: 'Missing',
     gt: 'WN', baseline: 'P', chase: 'WN',
+    modal: { t: 'WN', a: 'Neu', v: 'WN', full: 'WN' },
     layers: [
       { l: 13, s: true, p: 0.912, b: [0.7375, 0.2625, 0.0000], a: [0.7054, 0.2946, 0.0000] },
       { l: 14, s: true, p: 0.899, b: [0.6935, 0.3065, 0.0000], a: [0.6614, 0.3386, 0.0000] },
@@ -129,7 +134,7 @@ function barSegments(t, a, v) {
 
     <el-row justify="center">
       <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="12">
-        <h1 class="section-title">Case Study</h1>
+        <h2>Case Study</h2>
         <p class="section-desc">
           Four representative samples showing attention budget reallocation before and after
           CHASE steering. All four cases flip from incorrect to correct prediction.
@@ -162,6 +167,14 @@ function barSegments(t, a, v) {
 
               <div class="sample-id">{{ c.id }}</div>
 
+              <div class="gt-box">
+                <span class="pred-label">GT</span>
+                <span class="gt-chip gt-text">T {{ c.modal.t }}</span>
+                <span class="gt-chip gt-audio">A {{ c.modal.a }}</span>
+                <span class="gt-chip gt-video">V {{ c.modal.v }}</span>
+                <span class="gt-chip gt-full">Full {{ c.modal.full }}</span>
+              </div>
+
               <div class="pred-box">
                 <span class="pred-label">Prediction</span>
                 <span class="tag-wrong">baseline</span>
@@ -169,7 +182,6 @@ function barSegments(t, a, v) {
                 <span class="pred-arrow">→</span>
                 <span class="tag-right">CHASE</span>
                 <span class="pred-right">{{ c.chase }}</span>
-                <span class="pred-gt">(GT: {{ c.gt }})</span>
                 <span class="pred-result">wrong → right ✓</span>
               </div>
 
@@ -207,13 +219,6 @@ function barSegments(t, a, v) {
 </template>
 
 <style scoped>
-.section-title {
-  margin: 0 0 1rem;
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-align: center;
-}
-
 .section-desc {
   margin: 0 0 1.25rem;
   font-size: 0.92rem;
@@ -324,6 +329,13 @@ function barSegments(t, a, v) {
 }
 
 .pred-box {
+  margin-bottom: 14px;
+}
+
+.pred-label { color: #909399; font-size: 12px; min-width: 56px; }
+
+.gt-box,
+.pred-box {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -331,11 +343,24 @@ function barSegments(t, a, v) {
   padding: 8px 14px;
   background: #f5f7fa;
   border-radius: 8px;
-  margin-bottom: 14px;
   font-size: 13px;
 }
 
-.pred-label { color: #909399; font-size: 12px; }
+.gt-box {
+  margin-bottom: 8px;
+}
+
+.gt-chip {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.gt-text { background: #E8F2FD; color: #1E5A96; }
+.gt-audio { background: #E8F7F1; color: #1F7A5C; }
+.gt-video { background: #FFF3E3; color: #9A5A10; }
+.gt-full { background: #EEF1F7; color: #4A5668; }
 
 .tag-wrong {
   font-size: 10px;
@@ -430,10 +455,6 @@ function barSegments(t, a, v) {
 .v-after  { background: #BA7517; }
 
 @media (max-width: 768px) {
-  .section-title {
-    font-size: 1.35rem;
-  }
-
   .section-desc {
     font-size: 0.86rem;
   }
