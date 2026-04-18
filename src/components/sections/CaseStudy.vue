@@ -103,10 +103,10 @@ const CASES = [
 ]
 
 const tabLabels = [
-  '① TAV ',
-  '② TV ',
-  '③ AV ',
-  '④ TA ',
+  '① Conflict Case (TAV) ',
+  '② Missing Case (TV) ',
+  '③ Missing Case (AV) ',
+  '④ Missing Case (TA) ',
 ]
 
 const comboBadgeClass = {
