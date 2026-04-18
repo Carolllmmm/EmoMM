@@ -5,10 +5,8 @@ const activeTab = ref('0')
 
 const CASES = [
   {
-    id: 'CMU-MOSI:2018:0018_0h-zjBukYpk_19',
     combo: 'TAV', dataset: 'CMU-MOSI', bucket: 'Conflict',
     gt: 'WN', baseline: 'P', chase: 'WN',
-    eta: 0.600, tau: 0.700, topk: 4,
     layers: [
       { l: 13, s: true,  p: 0.959, b: [0.7436, 0.2319, 0.0245], a: [0.7069, 0.2470, 0.0461] },
       { l: 14, s: true,  p: 0.960, b: [0.7244, 0.2152, 0.0605], a: [0.6847, 0.2330, 0.0823] },
@@ -29,10 +27,8 @@ const CASES = [
     ],
   },
   {
-    id: 'CH-SIMSv2:1566:1566_aqgy5_0008_2',
     combo: 'TV', dataset: 'CH-SIMSv2', bucket: 'Missing',
     gt: 'WN', baseline: 'N', chase: 'WN',
-    eta: 0.600, tau: 0.700, topk: 4,
     layers: [
       { l: 13, s: true,  p: 0.765, b: [0.9809, 0.0000, 0.0191], a: [0.9347, 0.0000, 0.0653] },
       { l: 14, s: true,  p: 0.776, b: [0.9792, 0.0000, 0.0208], a: [0.9331, 0.0000, 0.0669] },
@@ -53,10 +49,8 @@ const CASES = [
     ],
   },
   {
-    id: 'CMU-MOSI:3560:1560_Qr1Ca94K55A_1',
     combo: 'AV', dataset: 'CMU-MOSI', bucket: 'Missing',
     gt: 'P', baseline: 'N', chase: 'P',
-    eta: 0.450, tau: 0.800, topk: 2,
     layers: [
       { l: 13, s: true, p: 0.958, b: [0.0000, 0.8918, 0.1082], a: [0.0000, 0.8794, 0.1206] },
       { l: 14, s: true, p: 0.959, b: [0.0000, 0.8497, 0.1503], a: [0.0000, 0.8372, 0.1628] },
@@ -77,10 +71,8 @@ const CASES = [
     ],
   },
   {
-    id: 'CMU-MOSI:3380:1380_Nzq88NnDkEk_1',
     combo: 'TA', dataset: 'CMU-MOSI', bucket: 'Missing',
     gt: 'WN', baseline: 'P', chase: 'WN',
-    eta: 0.600, tau: 0.700, topk: 4,
     layers: [
       { l: 13, s: true, p: 0.912, b: [0.7375, 0.2625, 0.0000], a: [0.7054, 0.2946, 0.0000] },
       { l: 14, s: true, p: 0.899, b: [0.6935, 0.3065, 0.0000], a: [0.6614, 0.3386, 0.0000] },
