@@ -134,8 +134,8 @@ function barSegments(t, a, v) {
 
     <el-row justify="center">
       <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="12">
-        <h2>Case Study</h2>
-        <p class="section-desc">
+        <h1>Case Study</h1>
+        <p>
           Four representative samples showing attention budget reallocation before and after
           CHASE steering. All four cases flip from incorrect to correct prediction.
           Asterisk (*) marks layers where conflict probability exceeds threshold (p ≥ τ).
@@ -219,14 +219,6 @@ function barSegments(t, a, v) {
 </template>
 
 <style scoped>
-.section-desc {
-  margin: 0 0 1.25rem;
-  font-size: 0.92rem;
-  color: #606266;
-  line-height: 1.7;
-  text-align: center;
-}
-
 .legend {
   width: 100%;
   display: flex;
@@ -455,10 +447,6 @@ function barSegments(t, a, v) {
 .v-after  { background: #BA7517; }
 
 @media (max-width: 768px) {
-  .section-desc {
-    font-size: 0.86rem;
-  }
-
   .pred-result {
     margin-left: 0;
   }
