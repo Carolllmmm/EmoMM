@@ -109,13 +109,13 @@ const buttons = [
     component: Document,
   },
   {
-    disabled: false,
+    disabled: true,
     name: "Code",
     link: "https://github.com/JunyaoHu/academic-project-page-template-vue",
     component: Files,
   },
   {
-    disabled: false,
+    disabled: true,
     name: "Demo",
     link: "https://junyaohu.github.io/academic-project-page-template-vue",
     component: MagicStick,
